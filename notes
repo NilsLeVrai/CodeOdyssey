@@ -1,0 +1,3 @@
+tous les jours a 9 heures, verifie si dans 3 jours c'est lanniv de qqn dans le fichier csv
+si cest le cas, envoie un message prive a tout le monde sauf la perosnne concernee
+chacun envoie une reponse, le bot la garde en memoire et l'envoie dans le channel
