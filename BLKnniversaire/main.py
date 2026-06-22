@@ -4,14 +4,15 @@ from dotenv import load_dotenv
 from bot import init
 
 load_dotenv()
+DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
+APP_ID = os.getenv("APP_ID")
+PUBLIC_KEY = os.getenv("PUBLIC_KEY")
 
 async def start():
-    init()
-    token = os.getenv("DISCORD_TOKEN")
-    id__ = os.getenv("APP_ID")
-    print(f"DISCORD_TOKEN : {token}")
+    await init()
+    print(f"DISCORD_TOKEN : {DISCORD_TOKEN}")
     await asyncio.sleep(2)
-    print(f"ID__ : {id__}")
+    print(f"ID__ : {APP_ID}")
 
 if __name__ == "__main__":
     asyncio.run(start())
