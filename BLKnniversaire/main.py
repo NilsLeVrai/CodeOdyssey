@@ -12,6 +12,7 @@ PUBLIC_KEY = os.getenv("PUBLIC_KEY")
 
 
 async def start():
+    print("testttt")
     await init()
     #print(f"DISCORD_TOKEN : {DISCORD_TOKEN}")
     #await asyncio.sleep(2)

@@ -1,6 +1,8 @@
 import discord
 import asyncio
 import os
+from parse import check_birthday
+
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -11,8 +13,29 @@ client = discord.Client(intents=intents)
 Tout est en vrac pour le moment, on fera la doc plus tard
 """
 
+def send_message(birthday_boys, wishing_boys):
+    channel = client.get_channel(1364972857498796042)
+    if channel:
+        # await channel.send("@here test cedric")
+        pass
+    print(f"bababoy:{birthday_boys}")
+    print(f"wish:{wishing_boys}")
+    for i in wishing_boys:
+        print(wishing_boys[i])
+
 @client.event
 async def on_ready():
+    print(f"Bot connecté en tant que {client.user} (ID: {client.user.id})")
+    birthday_boys, wishing_boys = check_birthday()
+    #print(birthday_boys)
+    if birthday_boys:
+        send_message(birthday_boys, wishing_boys)
+    await asyncio.sleep(86400)
+
+async def init():
+    await client.start(os.getenv("DISCORD_TOKEN"))
+
+"""
     print(f"Bot connecté en tant que {client.user} (ID: {client.user.id})")
     channel = client.get_channel(1364972857498796042)
     if channel:
@@ -63,6 +86,4 @@ async def on_ready():
 
    # asyncio.create_task(forward_reply(user_wadi, "Wadi"))
     asyncio.create_task(forward_reply(user_nils, "Nils"))
-
-async def init():
-    await client.start(os.getenv("DISCORD_TOKEN"))
+"""
