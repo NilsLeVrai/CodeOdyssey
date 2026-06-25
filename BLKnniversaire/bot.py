@@ -1,13 +1,12 @@
 import discord
 import asyncio
 import os
-from parse import check_birthday
+from parse import check_if_task, check_send
 
 
 intents = discord.Intents.default()
 intents.message_content = True
 client = discord.Client(intents=intents)
-
 
 """
 Tout est en vrac pour le moment, on fera la doc plus tard
@@ -26,13 +25,15 @@ def send_message(birthday_boys, wishing_boys):
 @client.event
 async def on_ready():
     print(f"Bot connecté en tant que {client.user} (ID: {client.user.id})")
-    birthday_boys, wishing_boys = check_birthday()
-    #print(birthday_boys)
+    check = check_if_task() # check birthday today or tomorrow
+    if (check):
+        birthday_boys, wishing_boys = check_send(check)
     if birthday_boys:
         send_message(birthday_boys, wishing_boys)
     await asyncio.sleep(86400)
 
-async def init():
+async def start():
+    print("testtt")
     await client.start(os.getenv("DISCORD_TOKEN"))
 
 """
